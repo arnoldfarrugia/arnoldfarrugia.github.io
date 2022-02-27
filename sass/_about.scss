@@ -29,7 +29,7 @@
 
 .icons {
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     margin-bottom: 150px;
 }
 
@@ -81,7 +81,7 @@
         padding-bottom: 60px;
     }
     .icons {
-        grid-template-columns: auto auto auto auto auto;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
     .tooltip {
@@ -109,12 +109,12 @@
     }
 
     .icons {
-        grid-template-columns: auto auto auto;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
 @media #{$bp_xs} {
     .icons {
-        grid-template-columns: auto auto;
+        grid-template-columns: 1fr 1fr;
     }
 }
