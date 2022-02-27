@@ -97,6 +97,7 @@
     position: relative;
     text-align: center;
     transition: transform 0.8s;
+    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
 }
   
