@@ -24,7 +24,7 @@ $(window)
         });
 
         // Animate "SWIPE" message
-        if ($(".swipe").position().top <= scrollDistance + 350) {
+        if ($(".swipe").position().top <= scrollDistance + 450) {
             $(".swipe").addClass("animate");
         } else {
             $(".swipe").removeClass("animate");
