@@ -415,6 +415,11 @@
     .prev, .next {
         display: none;
     }
+
+    .portfolio-txt {
+        text-align: justify;
+        hyphens: auto;
+    }
 }
 
 @media #{$bp_xs} {

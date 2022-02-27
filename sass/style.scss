@@ -32,17 +32,18 @@ html {
 .section {
     padding-top: 50px;
     box-sizing: border-box;
+
+    &.v-align {
+        height: 100vh;
+        padding-top: 0;
+        display: flex;
+        justify-items: center;    
+        align-items: center;
+    }
+
 }
 .fs {
     height: 100vh;
-}
-
-.v-align {
-    height: 100vh;
-    padding-top: 0;
-    display: flex;
-    justify-items: center;    
-    align-items: center;
 }
 
 // ---------- Navigation ---------- 
@@ -250,6 +251,10 @@ b {
         
         .text {
             font-size: $lrg - 25px;
+
+            b{
+                font-size: $lrg - 15px;
+            }
         }   
     }
 
