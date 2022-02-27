@@ -1,0 +1,115 @@
+// ---------- About ---------- 
+
+.profile {
+    padding: 80px 0;
+
+    .img {
+        filter: drop-shadow(-2px 2px 3px $primary);
+        float: left;
+        max-width: 45%;
+        padding: 0 20px 20px 0;
+    }
+    
+    .photo {
+        width: 450px;
+        border-radius: 50px 50px 50px 0;
+        clip-path: polygon(100% 0, 100% 100%, 20% 100%, 0 80%, 0 0);
+        filter: grayscale(100%);
+        -webkit-filter: grayscale(100%);
+        transition: 1s ease-in-out;
+
+        &:hover {
+            filter: none;
+            -webkit-filter: grayscale(0);
+        }
+    }
+}
+
+// ----- Icons -----
+
+.icons {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto;
+    margin-bottom: 150px;
+}
+
+.icon {
+    display: block;
+    font-size: 65px;
+    margin: auto;
+    text-align: center;
+    pointer-events: none;
+}
+
+.ps {
+    @include icon-size;
+    background-image: url("../images/logos/Ps.svg");
+
+    &.dark {
+        background-image: url("../images/logos/Ps-drk.svg");
+    }
+}
+
+.ai {
+    @include icon-size;
+    background-image: url("../images/logos/Ai.svg");
+
+    &.dark {
+        background-image: url("../images/logos/Ai-drk.svg");
+    }
+}
+
+.tooltip {
+    visibility: hidden;
+    max-width: 100px;
+    padding: 5px 0 15px 0;
+    margin: auto;
+    font-family: $main-font;
+    font-weight: 300;
+    font-size: $xs;
+    line-height: $xs;
+    text-align: center;
+    animation: fadeInDown;
+    animation-duration: 1s;
+}
+
+// ---------- Media Queries ---------- 
+
+@media #{$bp_tablet} {
+    .profile {
+        padding-top: 50px;
+        padding-bottom: 60px;
+    }
+    .icons {
+        grid-template-columns: auto auto auto auto auto;
+    }
+
+    .tooltip {
+        font-size: $xs - 4px;
+        padding-bottom: 10px;
+    }
+}
+
+@media #{$bp_mobile} {
+
+    .profile {
+        
+        .img {
+            float: none;
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 0 0 50px 0;
+        }
+    }
+
+    .icons {
+        grid-template-columns: auto auto auto;
+    }
+}
+
+@media #{$bp_xs} {
+    .icons {
+        grid-template-columns: auto auto;
+    }
+}

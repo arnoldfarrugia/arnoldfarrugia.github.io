@@ -1,0 +1,426 @@
+// ---------- Portfolio ---------- 
+
+.my-work {
+    padding-top: 80px;
+    padding-bottom: 50px;
+}
+
+.portfolio {
+    position: relative;
+}
+
+// ----- Category Filter -----
+
+.filter {
+    display: flex;
+    padding-left: 40px;
+    height: 30px;
+}
+
+.category {
+    font-family: $main-font;
+    font-weight: 300;
+    font-size: $xs;
+    cursor: pointer;
+    transition: 0.5s;
+
+    &:not(:first-child) {
+        margin-left: 25px;
+    }
+
+    &:hover {
+        color: $primary;
+    }
+
+    &.active {
+        color: $primary;
+        
+        &::after {
+            content: "";
+            display: block;
+            width: 7px;
+            height: 7px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: $primary;
+        }
+    }
+}
+
+.portfolio {
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+}
+
+// ----- Slider -----
+
+.slider {
+    position: relative;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    &::-webkit-scrollbar {
+        display: none;
+      }
+}
+
+// ----- Cards -----
+
+.card, .card-inner {
+    width: $card-size;
+    height: $card-size;
+}
+
+.card {
+    margin-right: 30px;
+    background-color: transparent;
+    border-radius: 20px 20px 20px 0;
+    perspective: 1000px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &.animate-in {
+        animation: fadeInRight; 
+        animation-duration: 0.5s;
+    }
+}
+
+.card-inner {
+    position: relative;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+  
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+  
+.card-front, .card-back {
+    background-color: $background;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+}
+
+.card-front {
+    border-radius: 20px 20px 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .logo {
+        width: 200px;
+        // height: 150px;
+    }
+}
+
+.card-back {
+    border-radius: 20px 20px 0 20px;
+    background-color: $background;
+    color: $dark;
+    transform: rotateY(180deg);
+
+    h3 {
+        font-family: $highlight-font;
+        font-size: $small;
+        line-height: $small;
+        font-weight: 500;
+        padding-top: 15px;
+    }
+
+    .group {
+        display: flex;
+        height: 200px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    ul {
+        width: 100%;
+        border: 1px solid $primary;
+        border-radius: 20px 20px 0 20px;
+        margin: 15px 20px;
+        padding: 10px;
+        text-align: center;
+        font-family: $main-font;
+        font-weight: 300;
+        font-size: $xs;
+        line-height: $small + 5px;
+    }
+
+    .link {
+        position: absolute;
+        bottom: 15px;
+        width: $card-size;
+    }
+
+    a, p {
+        margin-left: auto;
+        font-family: $main-font;
+        font-size: $xs;
+        font-weight: 300;
+        color: $dark;
+        transition: 0.5s ease-in-out;
+
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+}
+
+.dl-logo, .btns, .sbp, .flask, .folder, .untitled, .zztap, .orochi {
+    display: none;
+    
+    .content {
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%);
+        width: 500px;
+        height: 500px;
+        padding: 20px;
+        background-color: $white;
+        border-radius: 30px 30px 30px 0;
+        z-index: 10;
+
+        img {
+            max-height: 100%;
+            margin: auto;
+        }
+
+        .close {
+            position: absolute;
+            top: -55px;
+            right: -55px;
+            color: $white;
+            font-size: 50px;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+        }
+    }
+
+    &::before {
+        content: "";
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: $dark;
+        opacity: 0.8;
+        z-index: 5;
+    }
+}
+
+// ----- Arrows -----
+
+.prev, .next {
+    z-index: 1;
+    font-size: 60px;
+    position: absolute;
+    transition: 0.2s ease-in-out;
+    color: $primary;
+
+    &:hover{
+        cursor: pointer;
+    }
+
+    &.inactive {
+        @include inactive
+    }
+}
+
+.prev {
+    left: -20px;
+}
+
+.next {
+    right: -20px;
+}
+
+.arrow {
+    pointer-events: none;
+}
+
+// ----- Swipe -----
+
+.swipe {
+    opacity: 0.6;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .arrow {
+        color: $primary;
+        font-size: $text;
+        margin-right: -15px;
+    }
+
+    .text {
+        margin-left: 15px;
+        font-size: 22px;
+        font-weight: 300;
+    }
+
+    &.animate {
+        animation: shakeX; 
+        animation-duration: 2s;
+    }
+}
+
+// ----- Text -----
+
+.portfolio-txt {
+    padding-bottom: 150px;
+}
+
+// ---------- Media Queries ---------- 
+
+@media #{$bp_laptop} {
+    .category {
+        font-size: $xs - 5px;
+        
+        &:not(:first-child) {
+            margin-left: 20px;
+        }
+    }
+
+    .slider {
+        height: 300px;
+    }
+
+    .card-back {
+    
+        h3 {
+            font-size: 22px;
+        }
+        
+        .group {
+            height: 180px;
+        }
+
+        ul {
+            padding: 5px;
+        }
+
+        .link {
+            width: 250px;
+            bottom: 5px;
+        }
+        
+        a {
+            font-size: $xs - 5px;
+        }
+    }
+
+    .card, .card-inner {
+        width: $card-size-m;
+        height: $card-size-m;
+    }
+}
+
+@media #{$bp_tablet} {
+    .my-work {
+        padding-top: 50px;
+    }
+
+    .prev, .next {
+        bottom: -80px;
+        }
+
+    .prev {
+        left: -18px;
+    }
+    
+    .next {
+        left: 60px;
+    }
+
+    .portfolio, .filter {
+        padding: 0;
+    }
+
+    .portfolio-txt {
+        padding-top: 50px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    .dl-logo, .btns, .sbp, .flask, .folder, .untitled, .zztap, .orochi {
+        
+        .content {
+            width: 68vw;
+            height: 68vw;
+        
+            .close {
+                top: -20px;
+                right: -20px;
+                font-size: 30px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .my-work {
+        padding-bottom: 0;
+    }
+
+    .filter {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr 1fr;
+        height: fit-content;
+    }   
+
+    .category {
+        margin: auto;
+        width: 85%;
+        padding: 10px;
+        text-align: center;
+        border: 1px solid $background;
+        border-radius: 10px;
+
+        &:not(:first-child) {
+            margin: auto;
+        }
+
+        &.active {
+            background-color: $primary;
+            border-color: $primary;
+            color: $background;
+            
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    .prev, .next {
+        display: none;
+    }
+}
+
+@media #{$bp_xs} {
+    .filter {
+        grid-template-columns: 1fr;
+        height: fit-content;
+        width: 100%;
+    }   
+}
