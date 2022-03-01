@@ -433,6 +433,13 @@
         text-align: justify;
         hyphens: auto;
     }
+
+    .card:active .card-inner {
+        -webkit-transform: rotateY(180deg);
+        -ms-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
 }
 
 @media #{$bp_xs} {
