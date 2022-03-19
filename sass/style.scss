@@ -122,7 +122,8 @@ b {
     align-items: center;
 
     .text {
-        font-size: $lrg;
+        // font-size: clamp(min, ideal, max);
+        font-size: clamp(30px, 4vw, 60px);
 
         &:hover {
             animation: pulse; 
@@ -202,10 +203,6 @@ b {
         }
     }
 
-    .email .text {
-        font-size: $lrg - 10px;
-    }
-
     .display {
         font-size: 30px;
         padding: 15px;
@@ -226,10 +223,7 @@ b {
     .text.lrg {
         font-size: $lrg - 20px;
     }
-
-    .email .text {
-        font-size: $lrg - 20px;
-    }   
+ 
 }
 
 @media #{$bp_mobile} {
@@ -248,14 +242,6 @@ b {
 
     .email {
         height: 50%;
-        
-        .text {
-            font-size: $lrg - 25px;
-
-            b{
-                font-size: $lrg - 15px;
-            }
-        }   
     }
 
     .default {
